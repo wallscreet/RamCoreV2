@@ -7,16 +7,6 @@ STATUS = ((0, 'Draft'), (1, 'Posted'))
 UPSTAT = ((0, 'Upcoming'), (1, 'Completed'))
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('home')
-
-
 class Post(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -24,7 +14,6 @@ class Post(models.Model):
     createdate = models.DateTimeField(auto_now_add=True)
     updatedate = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS)
-    category = models.CharField(max_length=255, default='none')
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)

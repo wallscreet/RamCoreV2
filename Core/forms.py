@@ -1,15 +1,6 @@
 from bootstrap_datepicker_plus import DatePickerInput
 from django import forms
-from .models import Post, Comment, Category, Upcoming
-
-
-# cats = [('Front Desk', 'Front Desk'), ('Guest Rooms', 'Guest Rooms'), ('Housekeeping', 'Housekeeping'),
-#        ('Maintenance', 'Maintenance'), ('Sales', 'Sales'), ('Security', 'Security'), ('Management', 'Management')]
-cats = Category.objects.all().values_list('name', 'name')
-cats_list = []
-
-for item in cats:
-    cats_list.append(item)
+from .models import Post, Comment, Upcoming
 
 
 class PostForm(forms.ModelForm):
