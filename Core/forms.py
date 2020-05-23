@@ -1,3 +1,4 @@
+from bootstrap_datepicker_plus import DatePickerInput
 from django import forms
 from .models import Post, Comment, Category, Upcoming
 
@@ -50,6 +51,10 @@ class CommentForm(forms.ModelForm):
         }
 
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
 class AddUpcomingForm(forms.ModelForm):
     class Meta:
         model = Upcoming
@@ -58,9 +63,10 @@ class AddUpcomingForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Title'}),
             'author': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'auth-userid', 'type': 'hidden'}),
-            'start_date': forms.DateTimeInput(attrs={'class': 'form-control'}),
-            'end_date': forms.DateTimeInput(attrs={'class': 'form-control'}),
+            'start_date': DateInput(attrs={'class': 'form-control'}),
+            'end_date': DateInput(attrs={'class': 'form-control'}),
             'num_rooms': forms.TextInput(attrs={'class': 'form-control'}),
             'details': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Please provide details..'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
 
         }

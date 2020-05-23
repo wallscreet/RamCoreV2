@@ -12,10 +12,9 @@ def home(request):
 
 
 class UpcomingView(ListView):
-    model = Upcoming
-    today = datetime.date.today()
-    Upcoming.objects.filter(end_date__gte=today).order_by('end_date')
+    queryset = Upcoming.objects.filter(status=0).order_by('-startdate')
     template_name = 'upcoming.html'
+    paginate_by = 5
 
 
 class AddUpcomingView(CreateView):

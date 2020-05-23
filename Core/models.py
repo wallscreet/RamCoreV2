@@ -4,6 +4,8 @@ from django.urls import reverse
 
 STATUS = ((0, 'Draft'), (1, 'Posted'))
 
+UPSTAT = ((0, 'Upcoming'), (1, 'Completed'))
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -53,6 +55,8 @@ class Upcoming(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     num_rooms = models.CharField(max_length=4)
+    status = models.IntegerField(choices=UPSTAT, default=0)
+
 
     def __str__(self):
         return self.name + ' | ' + str(self.author)
