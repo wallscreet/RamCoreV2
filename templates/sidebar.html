@@ -7,12 +7,13 @@
         <div class="card my-4">
             <h5 class="card-header">Upcoming Groups & Events</h5>
             <div class="card-body">
+            <h5>New Features Comning Soon...
                 {% for upcoming in Upcoming %}
                     <p class="card-text"><h6> {{ upcoming.name }} </h6></p>
                     <small><p class="card-text"> {{ upcoming.start_date }} | </p></small><br/>
                     <a href="#" class="btn btn-danger">Know more!</a><hr>
                 {% endfor %}
-            <a href="{% url 'add_upcoming' %}" class="btn btn-danger">Add New</a><hr>
+            <a href="{% url 'add_upcoming' %}" class="btn btn-danger">Coming Soon</a><hr>
             </div>
         </div>
 </div>
