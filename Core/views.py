@@ -2,8 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post, Upcoming
 from .forms import PostForm, PostEditForm, CommentForm, AddUpcomingForm
-from django.db.models import Q
-import datetime
 
 '''
 def home(request):
@@ -56,11 +54,6 @@ class EditPostView(UpdateView):
     form_class = PostEditForm
     template_name = 'edit_post.html'
     # fields = ['title', 'body', 'status']
-
-
-def categoryview(request, cats):
-    category_posts = Post.objects.filter(category=cats)
-    return render(request, 'category.html', {'cats': cats, 'category_posts': category_posts})
 
 
 def authorview(request, author):
